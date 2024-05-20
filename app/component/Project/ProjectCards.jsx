@@ -5,7 +5,7 @@ import { Card, Grid, Box, Button, Stack, Skeleton } from "@mui/material";
 import Link from "next/link";
 import Image from "mui-image";
 
-export const ProjectCardNew = ({ data }) => {
+export const ProjectCard = ({ data }) => {
   const [load, setLoad] = useState(false);
   const { cover, Name, LivePage, Code, Tags } = data;
   const [isHovered, setHover] = useState(false);
@@ -16,131 +16,58 @@ export const ProjectCardNew = ({ data }) => {
 
   const printtag = Tags.map((e, i) => {
     return (
-      <Button
+      <button
         key={i}
-        style={{
-          color: "#D9D9D9",
-          fontWeight: "200",
-          fontSize: "18px",
-          height: 30,
-          margin: 0,
-          background: "#343434",
-          border: "2px solid none",
-          borderRadius: "5px",
-          fontFamily: "Space Grotesk, sans-serif",
-        }}
+        className="text-white hover:text-green transform: font-light text-base h-8 px-2 border-none rounded-md transition duration-500"
       >
         {e.name}
-      </Button>
+      </button>
     );
   });
 
   return (
-    <>
-      <Grid item md={6} lg={6} sm={12}>
-        <Stack sx={{ background: "none" }} elevation={0} spacing={1}>
-          <div
-            className="Image"
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            style={{ width: "100%", height: "100%", position: "relative" }}
-          >
-            {isHovered && (
-              <Box
-                className="overlay"
-                style={{
-                  zIndex: 1,
-                  width: "100%",
-                  height: "370px",
-                  position: "absolute",
-                  display: "flex",
-                  alignItems: "center",
-                  color: "white",
-                  background: "rgb(36 36 36 / 50%)",
-                  justifyContent: "center",
-                  boxSizing: "content-box",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: "10px",
-                  }}
-                >
-                  <a
-                    style={{
-                      color: "white",
-                      padding: 0,
-                      margin: 0,
-                      width: 120,
-                      borderBottom: "5px solid",
-                      borderRadius: 0,
-                      borderColor: "#4EE1A0",
-                      textAlign: "center",
-                    }}
-                    href={LivePage}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Project
-                  </a>
-                  <a
-                    style={{
-                      color: "white",
-                      padding: 0,
-                      margin: 0,
-                      width: 120,
-                      borderBottom: "5px solid",
-                      borderRadius: 0,
-                      borderColor: "#4EE1A0",
-                      textAlign: "center",
-                    }}
-                    href={Code}
-                  >
-                    View Code
-                  </a>
-                </div>
-              </Box>
-            )}
-            {!load && (
-              <Skeleton
-                variant="rectangular"
-                width="100%"
-                height="370px"
-                sx={{ bgcolor: "gray" }}
-              />
-            )}
+    <div className="flex flex-col gap-2">
+      <div
+        className="Image rounded-md"
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        style={{ width: "100%", height: "100%", position: "relative" }}
+      >
+        {isHovered && (
+          <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 rounded-md z-20 flex flex-col justify-center items-center gap-5">
+            <a
+              className="text-white p-0 m-0 w-28 border-b-2 border-solid border-green text-center"
+              href={LivePage}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Project
+            </a>
+            <a
+              className="text-white p-0 m-0 w-28 border-b-2 border-solid border-green text-center"
+              href={Code}
+            >
+              View Code
+            </a>
+          </div>
+        )}
+        {!load && (
+          <Skeleton variant="rectangular" className="w-full h-96 bg-gray-500" />
+        )}
 
-            <Image
-              alt=""
-              src={cover}
-              style={{
-                position: "relative",
-                zIndex: 0,
-              }}
-              width="100%"
-              height="370px"
-              fit="cover"
-              duration={0}
-              onLoad={handleLoad}
-            />
-          </div>
-          <p style={{ color: "white" }}>{Name}</p>
-          <div
-            style={{
-              height: "50px",
-              display: "flex",
-              flexDirection: "row",
-              gap: "5px",
-            }}
-          >
-            {printtag}
-          </div>
-        </Stack>
-      </Grid>
-    </>
+        <Image
+          alt=""
+          src={cover}
+          className="rounded-md relative z-0"
+          width="100%"
+          height="370px"
+          fit="cover"
+          duration={0}
+          onLoad={handleLoad}
+        />
+      </div>
+      <p className="text-white font-bold pl-2 pr-2">{Name}</p>
+      <div className="h-fit flex flex-row gap-3">{printtag}</div>
+    </div>
   );
 };

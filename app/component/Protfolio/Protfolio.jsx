@@ -1,72 +1,54 @@
 "use client";
 
 import Image from "next/image";
-import { Button, Box, Divider, Stack, Typography } from "@mui/material";
-import Photo2 from "@/public/images/profolio-picture.png";
-import LabTabs from "./LabTabs";
+import { Button } from "@mui/material";
+import TabGallery from "@/app/component/Protfolio/TabGallery/TabGallery";
 
 export default function Protfolio({ componentRef }) {
   return (
-    <>
-      <Stack sx={{ marginLeft: "120px", marginRight: "120px" }} spacing={4}>
-        <Box>
-          <Image
-            alt=""
-            src={Photo2}
-            style={{
-              position: "absolute",
-              top: 200,
-              right: 100,
-              width: 350,
-              height: 400,
-              objectFit: "contain",
-            }}
-          />
-          <Stack
-            style={{
-              position: "relative",
-              zIndex: 1,
-              display: "flex",
-            }}
-            direction="column"
-            spacing={2}
-          >
-            <h1>Nice to meet you!</h1>
-            <h1>
-              {`I'm `}
-              <span style={{ borderBottom: "5px solid #4EE1A0" }}>
-                {`Sam Chiou.`}
-              </span>
-            </h1>
-            <p style={{ maxWidth: 520 }}>
-              {`I'm a front-end developer passionate about
+    <secion>
+      <div className="flex flex-col gap-8 relative">
+        <Image
+          src="/images/profolio-picture.jpg"
+          width={250}
+          height={250}
+          className="absolute rounded-full border-0 right-0 -bottom-0 cursor-pointer"
+          alt="Sam Chiou"
+        />
+        <h1 className="text-white font-bold text-extra-large">
+          Nice to meet you!
+        </h1>
+        <h1 className=" text-white font-bold text-extra-large">
+          {`I'm `}
+          <span className=" border-b-4 border-green border-solid">{`Sam Chiou.`}</span>
+        </h1>
+        <p className=" text-white text-medium lg:w-[70%]">
+          {`I'm a front-end developer passionate about
               building human-centered web pages that provide solutions to users' problems.`}
-            </p>
-            <p
-              style={{ color: "#4EE1A0" }}
-            >{`#Sociology #Social Innovation #Statistic`}</p>
-            <Button
-              sx={{
-                width: 150,
-                borderBottom: 5,
-                borderRadius: 0,
-                borderColor: "#4EE1A0",
-                color: "white",
-              }}
-              onClick={() =>
-                componentRef.current?.scrollIntoView({
-                  behavior: "smooth",
-                })
-              }
-            >
-              CONTRACT ME
-            </Button>
-          </Stack>
-        </Box>
+        </p>
+        <p
+          style={{ color: "#4EE1A0" }}
+        >{`#Sociology #Social Innovation #Statistic`}</p>
+        <Button
+          sx={{
+            width: 150,
+            borderBottom: 5,
+            borderRadius: 0,
+            borderColor: "#4EE1A0",
+            color: "white",
+          }}
+          onClick={() =>
+            componentRef.current?.scrollIntoView({
+              behavior: "smooth",
+            })
+          }
+        >
+          CONTRACT ME
+        </Button>
+      </div>
 
-        <Divider sx={{ background: "gray" }} />
-        <LabTabs />
-      </Stack>
-    </>
+      <hr class="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
+      <h2>Hi There!</h2>
+    </secion>
   );
 }

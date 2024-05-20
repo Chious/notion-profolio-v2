@@ -34,6 +34,7 @@ const config: Config = {
       },
       fontWeight: {
         bold: "700",
+        medium: "500",
       },
     },
   },

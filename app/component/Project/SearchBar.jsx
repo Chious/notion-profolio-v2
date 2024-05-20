@@ -1,7 +1,6 @@
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { Stack } from "@mui/material";
 import { useApp } from "@/app/contexts/AppContext";
 
 export default function SearchBar() {
@@ -44,14 +43,7 @@ export default function SearchBar() {
   const uniqueTags = [...new Set(flattenedTags)];
 
   return (
-    <Stack
-      direction="row"
-      sx={{
-        height: "40px",
-        border: "3px solid transparent",
-        borderRadius: "20px",
-      }}
-    >
+    <div className=" flex">
       <Autocomplete
         disablePortal
         id="combo-box-demo"
@@ -98,6 +90,6 @@ export default function SearchBar() {
       >
         Clear
       </button>
-    </Stack>
+    </div>
   );
 }
