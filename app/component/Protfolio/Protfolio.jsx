@@ -47,7 +47,7 @@ export default function Protfolio({ componentRef }) {
         </Button>
       </div>
 
-      <hr class="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
+      <hr className="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
       <h2>Hi There!</h2>
     </secion>
   );

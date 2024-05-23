@@ -1,0 +1,362 @@
+[
+  {
+    "type": "heading_2",
+    "blockId": "51073b41-2718-406b-b5f8-c664a382e8cc",
+    "parent": "## 前言",
+    "children": []
+  },
+  {
+    "type": "callout",
+    "blockId": "4aa03e3c-0f37-4132-be08-9b547e719c56",
+    "parent": "> 💡 看完這篇文章你會知道：  \n>  1. 什麼是 Virtual DOM？  \n>  2 組成 Virtual DOM的最小單位：createElement",
+    "children": []
+  },
+  {
+    "type": "heading_2",
+    "blockId": "763e4801-dcc9-40f8-8995-e437e0626936",
+    "parent": "## React 與 無前端框架的差別：Virtual DOM",
+    "children": []
+  },
+  {
+    "type": "numbered_list_item",
+    "blockId": "95b10719-83bd-4838-b97f-2b10441ba5be",
+    "parent": "1. **較好維護的程式碼：**",
+    "children": []
+  },
+  {
+    "type": "embed",
+    "blockId": "8a2d1de9-e043-4c0e-9881-63167001a307",
+    "parent": "[embed](https://codepen.io/Chious/pen/ZEZwgLj)",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "2108c1fb-17b7-46a5-9bd3-ab914aa08f70",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "8add491e-81d1-4e57-b526-1d6cf4860452",
+    "parent": "如果使用傳統的Javascript 來為維護DOM，這是一件很麻煩的事情：",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "ce88de91-b13b-4ddb-a9a0-176f2d250233",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "bulleted_list_item",
+    "blockId": "c8ad0d54-768e-49d6-8341-c0adb7d5b77d",
+    "parent": "- 產生一個初始的 <ul/> 物件。",
+    "children": []
+  },
+  {
+    "type": "bulleted_list_item",
+    "blockId": "9f469e54-ff1a-4b0a-822f-c56aefe88284",
+    "parent": "- 當按鈕被點擊時擷取使用者輸入的資訊。",
+    "children": []
+  },
+  {
+    "type": "bulleted_list_item",
+    "blockId": "16fe771f-de65-49df-aa2a-029a10fc4c1e",
+    "parent": "- 產生一個新的<li/>物件，並且賦予id、內容。",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "70abdb68-6fac-4af7-9985-c132a96ba4b3",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "b7214982-333a-4b3c-901f-522304169e5d",
+    "parent": "Virtual DOM 簡化整個流程。",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "6bec6e88-957b-4c27-aa5a-729970aedaa3",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "numbered_list_item",
+    "blockId": "cb6af824-5de4-42cb-ba77-ab556adb2cc7",
+    "parent": "1. **只對必要重繪的部分進行重構：**",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "fbf096a8-0f14-4747-b0ad-0a73074346da",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "814a197a-be6e-4135-825b-74fd4e573780",
+    "parent": "當DOM元素進行變更時，Virtual DOM會比較上一次的節點，並對對小的所需進行重繪。想像今天有個 `Counter` 的物件，當點擊按鈕後會更新計數器的數量：",
+    "children": []
+  },
+  {
+    "type": "code",
+    "blockId": "60f17d27-32cc-4ff5-8def-d97f83f8eaaa",
+    "parent": "```javascript\nconst virtualDOM = {\n  type: 'div',\n  props: {\n    children: [\n      {\n        type: 'p',\n        props: {\n          children: ['目前計數：0'],\n        },\n      },\n      {\n        type: 'button',\n        props: {\n          onClick: () => setCount(count + 1),\n          children: ['點我增加'],\n        },\n      },\n    ],\n  },\n};\n```",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "93c7f1ca-dfc5-4f04-bde8-0aaf3b0e560d",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "00feb5d7-e8cb-40cb-962a-5e00b574a072",
+    "parent": "然而當按鈕被點擊後，計數器的數字被變更，React 紀錄了新的資料對應關係（而非真實的DOM元素），並產生了新的 virtaulDOM：",
+    "children": []
+  },
+  {
+    "type": "code",
+    "blockId": "0accec6e-0574-4fc5-ae21-1a1c20eaa187",
+    "parent": "```javascript\nconst newVirtualDOM = {\n  type: 'div',\n  props: {\n    children: [\n      {\n        type: 'p',\n        props: {\n          children: ['目前計數：1'],\n        },\n      },\n      {\n        type: 'button',\n        props: {\n          onClick: () => setCount(count + 1),\n          children: ['點我增加'],\n        },\n      },\n    ],\n  },\n};\n```",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "d22e283c-dbe1-4657-a941-2056f2122321",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "963718c1-9d30-4b35-9b88-7934dd23cc58",
+    "parent": "透過React的演算法去比較新/舊的結構的差異，我們發現僅有 <p/> 的內容需要重繪，React 會根據最小的DOM操作範圍，去返回新的真實DOM元素物件：",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "75376e4f-7f3e-46dd-8bd0-9dd47428cc84",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "code",
+    "blockId": "41add307-f8a4-4fa1-b697-afa0d55c5e2b",
+    "parent": "```html\n<div>\n  <p>目前計數：1</p>\n  <button>點我增加</button>\n</div>\n```",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "c7cd8aaa-3d25-4a84-9065-66527951a280",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "88e9f44b-178f-4b8e-9e46-2107a0d6bfb0",
+    "parent": "若操作DOM元素，可能會重置整個物件並進行畫面重繪，相較於Javascript的計算是一件昂貴的事情。（這邊較為抽象，暫時參考網路上的[說法](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/47)）。",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "c73039c1-ca84-4759-8b1d-73b134a96105",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "59ea30ab-1c28-4048-928c-dd417ad7e789",
+    "parent": "註：在React 當中，畫面繪製分為兩個流程：",
+    "children": []
+  },
+  {
+    "type": "bulleted_list_item",
+    "blockId": "14dd4186-b2f2-4097-bc69-2ef7fde13de0",
+    "parent": "- Reconciler：負責定義、管理畫面結構的描述（如上面的 `newVirtualDOM`）。",
+    "children": []
+  },
+  {
+    "type": "bulleted_list_item",
+    "blockId": "d8647435-0b3a-4f9d-ac47-4840210a68e3",
+    "parent": "- Renderer：根據Reconciler的定義，同時會比較新舊的差異，並在 `react-dom` 這個容器中繪製真實的DOM元素。",
+    "children": []
+  },
+  {
+    "type": "heading_2",
+    "blockId": "3aaa1675-3f5d-4aa3-9a9f-d0f0bed527b8",
+    "parent": "## React DOM 的容器：Root",
+    "children": []
+  },
+  {
+    "type": "callout",
+    "blockId": "ce151978-3c47-4675-b5d0-c63191cf8180",
+    "parent": "> 💡 了解Virtual DOM 的機制後，在專案中又是在哪處幫我們掌管專案的呢？",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "6e25ffa1-d86e-46fe-80e8-3914098c0847",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "f98fd31d-21ef-46fd-b738-6b84fbea1c35",
+    "parent": "若使用 `create-react-app` 建立一個專案，你可以在資料夾中找到 `index.html`，長相如下：",
+    "children": []
+  },
+  {
+    "type": "code",
+    "blockId": "1284f892-2084-4860-84c8-f90b3380509c",
+    "parent": "```javascript\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>React + TypeScript + Replit</title>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n    <script type=\"module\" src=\"/src/index.jsx\"></script>\n</html>\n```",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "5c9bf614-7c22-48c8-a348-91a1726ef216",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "211d28bd-01e7-403a-a7d3-0099bc234d55",
+    "parent": "在同一個資料夾也會發現`index.js`：",
+    "children": []
+  },
+  {
+    "type": "code",
+    "blockId": "79cf8d99-ffef-40c7-8e36-3f61dd9c161a",
+    "parent": "```javascript\nimport React from 'react'\nimport ReactDOM from 'react-dom/client'\nimport App from './App'\n\nReactDOM.createRoot(document.getElementById('root')).render(\n\t<React.StrictMode>\n\t\t<App />\n\t</React.StrictMode>\n)\n```",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "52a2239c-2428-456f-9139-e5a96fa34e2c",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "66327e6a-1f42-4dc1-bbcc-5e3b12a00134",
+    "parent": "想像網頁在建構的過程中，我們會透過 `ReactDOM` 這個代理人，來幫我們決定該繪製什麼畫面。",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "0f5eb5a1-dc4a-4c15-9dd5-6c6a087884b6",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "heading_2",
+    "blockId": "743ef063-3467-46ab-b3e2-312bae489b1d",
+    "parent": "## 什麼是[React Element](https://react.dev/reference/react/createElement)",
+    "children": []
+  },
+  {
+    "type": "callout",
+    "blockId": "84875ea6-fb01-4daa-8b3a-bd8e6d4d39b9",
+    "parent": "> 💡 接下來要介紹組成 Virtual DOM 最小的單位：React Element",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "828032c2-c3ad-4324-bb3b-e9c6338b0206",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "8d24cc35-0893-4311-8813-3e2c6c37d452",
+    "parent": "在 React 當中，我們常以 Self Closing Tag 呼叫一個物件（例如： `<Greeting/>`），事實上在編譯時呼叫了 `createElement` 這個方法去建立 virtaul DOM的節點：",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "73e97dc8-e66a-432d-aa4d-eed065d65637",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "code",
+    "blockId": "7c3618fe-51fa-4eef-ab8a-2bda7440a1d3",
+    "parent": "```javascript\nfunction Greeting({ name }) {\n\n  return createElement(\n    'h1', // HTML標籤\n    { className: 'greeting' }, //屬性\n    'Hello' // 子元素\n  );\n}\n```",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "f774beb7-20a8-454a-8f0b-d23b788efb33",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "11a7c619-dfcc-46ec-b841-f7d6e6baaa7e",
+    "parent": "而這些微小的解點構成了一個頁面的樣子，同時在 Component上能夠描述各式的標籤：",
+    "children": []
+  },
+  {
+    "type": "code",
+    "blockId": "218a0abb-e1c2-460d-851d-04311f16f857",
+    "parent": "```javascript\nfunction App() {\n  return (\n    <div>\n      <Greeting name=\"Amy\" />\n      <Greeting name=\"Sam\" />\n      <Greeting name=\"Johnny\" />\n    </div>\n  );\n}\n```",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "45252569-3b97-4ea0-9627-8d5c9fdf86b9",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "e2991092-9205-4c2b-ac50-541d68e4707b",
+    "parent": "然而我們的瀏覽器或編譯器並不真的認識 `<Greeting/>` 這個標籤，而是在 build time 時，透過轉譯器（如：Babel），將 `<Greeting/>` 轉譯成：",
+    "children": []
+  },
+  {
+    "type": "code",
+    "blockId": "3d51a434-d831-4e48-8dc3-66ab468fd2a2",
+    "parent": "```javascript\n createElement(’hi’, {className: “greeting”}, \"Hello\") \n```",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "abdcf865-dea9-4ef5-b73d-1d6f972eb8c2",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "138999cc-d6da-4923-b6ec-5749b243cde5",
+    "parent": "並在瀏覽器運行時（run time）運作這些方法：",
+    "children": []
+  },
+  {
+    "type": "code",
+    "blockId": "b27f8e13-485c-42e3-b33b-721fd6a8b092",
+    "parent": "```javascript\n createElement(’hi’, {className: “greeting”}, \"Hello\") \n createElement(’hi’, {className: “greeting”}, \"Hello\") \n createElement(’hi’, {className: “greeting”}, \"Hello\") \n  \n  ...（假如有很多節點的話）\n```",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "38909c31-ffea-4605-b7ed-0f0d46ef36d0",
+    "parent": "",
+    "children": []
+  },
+  {
+    "type": "heading_2",
+    "blockId": "c265d5ee-01e6-4492-a1ac-9cdaeafef627",
+    "parent": "## 參考資料",
+    "children": []
+  },
+  {
+    "type": "numbered_list_item",
+    "blockId": "d295c837-e19d-4f72-8d15-5293d2c9006e",
+    "parent": "1. **React 思維進化：一次打破常見的觀念誤解，躍升專業前端開發者**",
+    "children": []
+  }
+]

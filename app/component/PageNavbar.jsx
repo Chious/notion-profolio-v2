@@ -9,9 +9,14 @@ import Link from "next/link";
 
 export default function PageNavbar() {
   return (
-    <nav className=" fixed z-[999] w-screen bg-black flex justify-between items-center p-5">
+    <nav className="fixed z-[999] w-screen bg-black font-bold flex justify-start items-center gap-20 p-5">
       <h1 className=" text-white">{`Sam's Blog`}</h1>
-      <div className="too-bar flex gap-3 flex-row">
+      <div className="titles flex gap-5 text-white">
+        <Link href="/">Home</Link>
+        <Link href="/about">About</Link>
+        <Link href="/blog">Blog</Link>
+      </div>
+      <div className="tool-bar flex gap-3 flex-row absolute right-8">
         <Link href="https://github.com/Chious">
           <Image width={30} height={30} src={githubicon} alt="github-link" />
         </Link>

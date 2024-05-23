@@ -43,20 +43,12 @@ export default function SearchBar() {
   const uniqueTags = [...new Set(flattenedTags)];
 
   return (
-    <div className=" flex">
+    <div className="flex">
       <Autocomplete
         disablePortal
         id="combo-box-demo"
         options={uniqueTags}
-        sx={{
-          width: 300,
-          height: "50px",
-          background: "white",
-          borderRadius: "3px",
-          "& .MuiInputBase-root": {
-            height: "50px",
-          },
-        }}
+        className="w-72 h-12 bg-white rounded-md"
         onChange={handleChange}
         renderOption={(props, option) => {
           return (
@@ -65,27 +57,21 @@ export default function SearchBar() {
             </li>
           );
         }}
-        renderInput={(params) => <TextField {...params} />}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            InputProps={{ ...params.InputProps, disableUnderline: true }}
+          />
+        )}
       />
       <button
-        style={{
-          width: "50px",
-          height: "50px",
-          border: "none",
-          background: "#343434",
-        }}
+        className="w-16 h-12 bg-neutral-700 text-white"
         onClick={handleSubmit}
       >
         Submit
       </button>
       <button
-        style={{
-          width: "50px",
-          height: "50px",
-          background: "#FD6687",
-          border: "1px solid transparent",
-          borderRadius: "0px 5px 5px 0px",
-        }}
+        className="w-12 h-12 bg-[#D10000] border-transparent rounded-r-md text-white"
         onClick={handleClear}
       >
         Clear
