@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import Hello from "@/app/data/post/hello.mdx";
 
 export default function Page({
   params: { post },
@@ -7,7 +10,7 @@ export default function Page({
 }) {
   return (
     <div className="flex justify-center items-center text-white">
-      This is post: {post}
+      <Hello />
     </div>
   );
 }

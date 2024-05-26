@@ -58,10 +58,7 @@ export default function SearchBar() {
           );
         }}
         renderInput={(params) => (
-          <TextField
-            {...params}
-            InputProps={{ ...params.InputProps, disableUnderline: true }}
-          />
+          <TextField {...params} InputProps={{ ...params.InputProps }} />
         )}
       />
       <button

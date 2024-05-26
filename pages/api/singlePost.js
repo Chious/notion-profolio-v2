@@ -15,9 +15,9 @@ export default async function handler(req, res) {
     throw new Error("Missing notion secret or Block-ID.");
   }
 
+  /*
   const mdblock = await n2m.pageToMarkdown(notionBlickId);
   const mdString = mdblock.toString();
-  /*
   const slug = "article";
   const filename = "post.md";
   const path = `./public/${slug}/${filename}`;
@@ -30,5 +30,13 @@ export default async function handler(req, res) {
   });
 */
 
-  res.status(200).json(mdblock);
+  const { results } = await notion.blocks.children.list({
+    block_id: notionBlickId,
+  });
+
+  //convert to markdown
+  const x = await n2m.blocksToMarkdown(results);
+  console.log(x);
+
+  res.status(200).json(x);
 }

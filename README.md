@@ -41,7 +41,15 @@ This is edit version from [version1](https://github.com/Chious/front-mentor-sing
 
 ### Useful resources
 
-1. [How to use .env in Nextjs](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables)
+- Notion API
+
+- NextJS
+
+1. [Markdown and MDX](https://nextjs.org/docs/app/building-your-application/configuring/mdx) --- create component from mdx
+
+- TailwindCSS
+
+1. [Typrography](https://tailwindcss.com/docs/plugins#typography) -- Customize style from mdx
 
 ## Author
 
