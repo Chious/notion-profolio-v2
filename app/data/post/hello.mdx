@@ -1,36 +1,186 @@
-# 書籍：《心流：高手都在研究的最優體驗心理學》
+# Single Post
 
-## 幸福感：有意識的控制輸入與輸出
+inList: No
+inMenu: No
+publish: No
 
-- 人類一生可以處理的資訊有限，大概是一千八百五十億位元的資訊。
-- 然而我們一天的精力卻被大量的卻被大量的事情分散：大約 15%用來吃喝拉撒、外在環境制約（例如：無腦滑臉書、被逼著去工作）
-- 當我們所接收到的資訊與我們的個人價值有所衝突的時候，我們的生活便會陷入不安、焦慮。試想有多少人承諾健身、減肥、戒癮、實現夢想，但就是因為我們的期待與現實有巨大了落差，所以才會感到痛苦。
+## 前言
 
-## 掌握意識的解方
+> 💡 看完這篇文章你會知道： \n> 1. 什麼是 Virtual DOM？ \n> 2 組成 Virtual DOM 的最小單位：createElement
 
-> 心流的秘訣在於：對於外在環境的解讀、以及身處的外在環境，兩者互相影響且缺一不可。
+## React 與 無前端框架的差別：Virtual DOM
 
-1. 建立一個概括性的目標，以及幾個小目標
-2. 根據鎖定的目標，找出可以評估進度的方法
-3. 專注在所做的事情上，不斷將挑戰做更精細的區分
-4. 發展與行動機會相當的技能
-5. 一但活動變得無趣，就把難度再提高一點
+1. **較好維護的程式碼：**
 
-## 孤獨：重視自己在關係中的連結（Chapacter 8）
+[https://codepen.io/Chious/pen/ZEZwgLj](https://codepen.io/Chious/pen/ZEZwgLj)
 
-在讀到這章的時候，覺得頗為諷刺的——沒想到要解決孤獨焦慮反而是要去重視自己得人際關係，包含了自己、家人或是摯友。當一個人獨處時，因為少了外在的限制，所以思緒便開始亂想——像是今天是不是又跟朋友吵架、別人是不是特別注意到我的穿著、嗚嗚好像又開始一個人。
+如果使用傳統的 Javascript 來為維護 DOM，這是一件很麻煩的事情：
 
-然而要徹底解決孤獨，取決於我們在關係中的態度：
+- 產生一個初始的 `<ul/>` 物件。
+- 當按鈕被點擊時擷取使用者輸入的資訊。
+- 產生一個新的`<li/>`物件，並且賦予 id、內容。
 
-- 個人：自己有哪些興趣、生活品好、舒適圈
-- 人際（朋友、家人、伴侶...）：依附關係、無條件的「愛」、安全感、共同目標、興趣或挑戰
-- 社會：個人的社會責任、志工...
+Virtual DOM 簡化整個流程。
 
-各層次的目標沒有好與壞，畢竟有些人光是為了維持生存就已經耗盡心力了，更遑論去談什麼社會價值。但就像是事業、健康一樣，人際並不像是如男人想的一樣手到擒來的。維持一個家庭的運作，打好小孩跟親戚或是學校老師的關係，或是在生活壓力下該如何排解自己的孤獨。有時候也在警惕自己，不要像大男人一樣，把一切的付出視為理所當然。
+1. **只對必要重繪的部分進行重構：**
 
-前陣子在跟朋友聊天的時候，談到明明自己想要的幸福是這麼簡單，但為什麼卻這麼的難。但因為關係需要付出、需要更新秘密、需要互相重視，因為有各種難處、需要主動，所以才質得去珍惜。
+當 DOM 元素進行變更時，Virtual DOM 會比較上一次的節點，並對對小的所需進行重繪。想像今天有個 `Counter` 的物件，當點擊按鈕後會更新計數器的數量：
 
-＊前陣子看到 apple 影集《Trying》跟這個意境還滿類似的。這個故事大概在講一對夫妻為了養小孩，儘管在生命中缺乏經驗、還有很多不安，還有為了給小孩建立一個安全的家，努力來克服困難。不管怎麼樣，大推！
+```jsx
+const virtualDOM = {
+  type: "div",
+  props: {
+    children: [
+      {
+        type: "p",
+        props: {
+          children: ["目前計數：0"],
+        },
+      },
+      {
+        type: "button",
+        props: {
+          onClick: () => setCount(count + 1),
+          children: ["點我增加"],
+        },
+      },
+    ],
+  },
+};
+```
+
+然而當按鈕被點擊後，計數器的數字被變更，React 紀錄了新的資料對應關係（而非真實的 DOM 元素），並產生了新的 virtaulDOM：
+
+```jsx
+const newVirtualDOM = {
+  type: "div",
+  props: {
+    children: [
+      {
+        type: "p",
+        props: {
+          children: ["目前計數：1"],
+        },
+      },
+      {
+        type: "button",
+        props: {
+          onClick: () => setCount(count + 1),
+          children: ["點我增加"],
+        },
+      },
+    ],
+  },
+};
+```
+
+透過 React 的演算法去比較新/舊的結構的差異，我們發現僅有 <p/> 的內容需要重繪，React 會根據最小的 DOM 操作範圍，去返回新的真實 DOM 元素物件：
+
+```html
+<div>
+  <p>目前計數：1</p>
+  <button>點我增加</button>
+</div>
+```
+
+若操作 DOM 元素，可能會重置整個物件並進行畫面重繪，相較於 Javascript 的計算是一件昂貴的事情。（這邊較為抽象，暫時參考網路上的[說法](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/47)）。
+
+註：在 React 當中，畫面繪製分為兩個流程：
+
+- Reconciler：負責定義、管理畫面結構的描述（如上面的 `newVirtualDOM`）。
+- Renderer：根據 Reconciler 的定義，同時會比較新舊的差異，並在 `react-dom` 這個容器中繪製真實的 DOM 元素。
+
+## React DOM 的容器：Root
+
+<aside>
+  💡 了解Virtual DOM 的機制後，在專案中又是在哪處幫我們掌管專案的呢？
+</aside>
+
+若使用 `create-react-app` 建立一個專案，你可以在資料夾中找到 `index.html`，長相如下：
+
+```jsx
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React + TypeScript + Replit</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/index.jsx"></script>
+</html>
+```
+
+在同一個資料夾也會發現`index.js`：
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+想像網頁在建構的過程中，我們會透過 `ReactDOM` 這個代理人，來幫我們決定該繪製什麼畫面。
+
+## 什麼是[React Element](https://react.dev/reference/react/createElement)
+
+<aside>
+💡 接下來要介紹組成 Virtual DOM 最小的單位：React Element
+
+</aside>
+
+在 React 當中，我們常以 Self Closing Tag 呼叫一個物件（例如： `<Greeting/>`），事實上在編譯時呼叫了 `createElement` 這個方法去建立 virtaul DOM 的節點：
+
+```jsx
+function Greeting({ name }) {
+  return createElement(
+    "h1", // HTML標籤
+    { className: "greeting" }, //屬性
+    "Hello" // 子元素
+  );
+}
+```
+
+而這些微小的解點構成了一個頁面的樣子，同時在 Component 上能夠描述各式的標籤：
+
+```jsx
+function App() {
+  return (
+    <div>
+      <Greeting name="Amy" />
+      <Greeting name="Sam" />
+      <Greeting name="Johnny" />
+    </div>
+  );
+}
+```
+
+然而我們的瀏覽器或編譯器並不真的認識 `<Greeting/>` 這個標籤，而是在 build time 時，透過轉譯器（如：Babel），將 `<Greeting/>` 轉譯成：
+
+```jsx
+ createElement(’hi’, {className: “greeting”}, "Hello")
+```
+
+並在瀏覽器運行時（run time）運作這些方法：
+
+```jsx
+ createElement(’hi’, {className: “greeting”}, "Hello")
+ createElement(’hi’, {className: “greeting”}, "Hello")
+ createElement(’hi’, {className: “greeting”}, "Hello")
+
+  ...（假如有很多節點的話）
+```
+
+## 參考資料
+
+1. **React 思維進化：一次打破常見的觀念誤解，躍升專業前端開發者**
 
 export default ({ children }) => (
   <div className="prose prose-h1:text-white prose-h2:text-white prose-p:text-white prose-li:text-white">

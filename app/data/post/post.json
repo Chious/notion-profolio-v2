@@ -1,362 +1,570 @@
 [
   {
-    "type": "heading_2",
-    "blockId": "51073b41-2718-406b-b5f8-c664a382e8cc",
-    "parent": "## 前言",
-    "children": []
-  },
-  {
-    "type": "callout",
-    "blockId": "4aa03e3c-0f37-4132-be08-9b547e719c56",
-    "parent": "> 💡 看完這篇文章你會知道：  \n>  1. 什麼是 Virtual DOM？  \n>  2 組成 Virtual DOM的最小單位：createElement",
-    "children": []
-  },
-  {
-    "type": "heading_2",
-    "blockId": "763e4801-dcc9-40f8-8995-e437e0626936",
-    "parent": "## React 與 無前端框架的差別：Virtual DOM",
-    "children": []
-  },
-  {
-    "type": "numbered_list_item",
-    "blockId": "95b10719-83bd-4838-b97f-2b10441ba5be",
-    "parent": "1. **較好維護的程式碼：**",
-    "children": []
-  },
-  {
-    "type": "embed",
-    "blockId": "8a2d1de9-e043-4c0e-9881-63167001a307",
-    "parent": "[embed](https://codepen.io/Chious/pen/ZEZwgLj)",
-    "children": []
-  },
-  {
     "type": "paragraph",
-    "blockId": "2108c1fb-17b7-46a5-9bd3-ab914aa08f70",
+    "blockId": "4a89ebbc-9126-46c8-9d63-8c0547a55012",
     "parent": "",
     "children": []
   },
   {
-    "type": "paragraph",
-    "blockId": "8add491e-81d1-4e57-b526-1d6cf4860452",
-    "parent": "如果使用傳統的Javascript 來為維護DOM，這是一件很麻煩的事情：",
+    "type": "image",
+    "blockId": "dd789236-17c5-42a2-bd53-d40e751d02d0",
+    "parent": "![whatis-data_structure.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a3329b51-a207-43ca-8d9d-85d01045e23a/6e71a81c-a821-469f-96f3-614985a18762/whatis-data_structure.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240526%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240526T230644Z&X-Amz-Expires=3600&X-Amz-Signature=f3e58bff98acba669b09de53ca7bcfbd41b7eeff42a588b9e86d466a0c0a8479&X-Amz-SignedHeaders=host&x-id=GetObject)",
     "children": []
   },
   {
     "type": "paragraph",
-    "blockId": "ce88de91-b13b-4ddb-a9a0-176f2d250233",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "bulleted_list_item",
-    "blockId": "c8ad0d54-768e-49d6-8341-c0adb7d5b77d",
-    "parent": "- 產生一個初始的 <ul/> 物件。",
-    "children": []
-  },
-  {
-    "type": "bulleted_list_item",
-    "blockId": "9f469e54-ff1a-4b0a-822f-c56aefe88284",
-    "parent": "- 當按鈕被點擊時擷取使用者輸入的資訊。",
-    "children": []
-  },
-  {
-    "type": "bulleted_list_item",
-    "blockId": "16fe771f-de65-49df-aa2a-029a10fc4c1e",
-    "parent": "- 產生一個新的<li/>物件，並且賦予id、內容。",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "70abdb68-6fac-4af7-9985-c132a96ba4b3",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "b7214982-333a-4b3c-901f-522304169e5d",
-    "parent": "Virtual DOM 簡化整個流程。",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "6bec6e88-957b-4c27-aa5a-729970aedaa3",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "numbered_list_item",
-    "blockId": "cb6af824-5de4-42cb-ba77-ab556adb2cc7",
-    "parent": "1. **只對必要重繪的部分進行重構：**",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "fbf096a8-0f14-4747-b0ad-0a73074346da",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "814a197a-be6e-4135-825b-74fd4e573780",
-    "parent": "當DOM元素進行變更時，Virtual DOM會比較上一次的節點，並對對小的所需進行重繪。想像今天有個 `Counter` 的物件，當點擊按鈕後會更新計數器的數量：",
-    "children": []
-  },
-  {
-    "type": "code",
-    "blockId": "60f17d27-32cc-4ff5-8def-d97f83f8eaaa",
-    "parent": "```javascript\nconst virtualDOM = {\n  type: 'div',\n  props: {\n    children: [\n      {\n        type: 'p',\n        props: {\n          children: ['目前計數：0'],\n        },\n      },\n      {\n        type: 'button',\n        props: {\n          onClick: () => setCount(count + 1),\n          children: ['點我增加'],\n        },\n      },\n    ],\n  },\n};\n```",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "93c7f1ca-dfc5-4f04-bde8-0aaf3b0e560d",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "00feb5d7-e8cb-40cb-962a-5e00b574a072",
-    "parent": "然而當按鈕被點擊後，計數器的數字被變更，React 紀錄了新的資料對應關係（而非真實的DOM元素），並產生了新的 virtaulDOM：",
-    "children": []
-  },
-  {
-    "type": "code",
-    "blockId": "0accec6e-0574-4fc5-ae21-1a1c20eaa187",
-    "parent": "```javascript\nconst newVirtualDOM = {\n  type: 'div',\n  props: {\n    children: [\n      {\n        type: 'p',\n        props: {\n          children: ['目前計數：1'],\n        },\n      },\n      {\n        type: 'button',\n        props: {\n          onClick: () => setCount(count + 1),\n          children: ['點我增加'],\n        },\n      },\n    ],\n  },\n};\n```",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "d22e283c-dbe1-4657-a941-2056f2122321",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "963718c1-9d30-4b35-9b88-7934dd23cc58",
-    "parent": "透過React的演算法去比較新/舊的結構的差異，我們發現僅有 <p/> 的內容需要重繪，React 會根據最小的DOM操作範圍，去返回新的真實DOM元素物件：",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "75376e4f-7f3e-46dd-8bd0-9dd47428cc84",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "code",
-    "blockId": "41add307-f8a4-4fa1-b697-afa0d55c5e2b",
-    "parent": "```html\n<div>\n  <p>目前計數：1</p>\n  <button>點我增加</button>\n</div>\n```",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "c7cd8aaa-3d25-4a84-9065-66527951a280",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "88e9f44b-178f-4b8e-9e46-2107a0d6bfb0",
-    "parent": "若操作DOM元素，可能會重置整個物件並進行畫面重繪，相較於Javascript的計算是一件昂貴的事情。（這邊較為抽象，暫時參考網路上的[說法](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/47)）。",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "c73039c1-ca84-4759-8b1d-73b134a96105",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "59ea30ab-1c28-4048-928c-dd417ad7e789",
-    "parent": "註：在React 當中，畫面繪製分為兩個流程：",
-    "children": []
-  },
-  {
-    "type": "bulleted_list_item",
-    "blockId": "14dd4186-b2f2-4097-bc69-2ef7fde13de0",
-    "parent": "- Reconciler：負責定義、管理畫面結構的描述（如上面的 `newVirtualDOM`）。",
-    "children": []
-  },
-  {
-    "type": "bulleted_list_item",
-    "blockId": "d8647435-0b3a-4f9d-ac47-4840210a68e3",
-    "parent": "- Renderer：根據Reconciler的定義，同時會比較新舊的差異，並在 `react-dom` 這個容器中繪製真實的DOM元素。",
-    "children": []
-  },
-  {
-    "type": "heading_2",
-    "blockId": "3aaa1675-3f5d-4aa3-9a9f-d0f0bed527b8",
-    "parent": "## React DOM 的容器：Root",
-    "children": []
-  },
-  {
-    "type": "callout",
-    "blockId": "ce151978-3c47-4675-b5d0-c63191cf8180",
-    "parent": "> 💡 了解Virtual DOM 的機制後，在專案中又是在哪處幫我們掌管專案的呢？",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "6e25ffa1-d86e-46fe-80e8-3914098c0847",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "f98fd31d-21ef-46fd-b738-6b84fbea1c35",
-    "parent": "若使用 `create-react-app` 建立一個專案，你可以在資料夾中找到 `index.html`，長相如下：",
-    "children": []
-  },
-  {
-    "type": "code",
-    "blockId": "1284f892-2084-4860-84c8-f90b3380509c",
-    "parent": "```javascript\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>React + TypeScript + Replit</title>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n    <script type=\"module\" src=\"/src/index.jsx\"></script>\n</html>\n```",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "5c9bf614-7c22-48c8-a348-91a1726ef216",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "211d28bd-01e7-403a-a7d3-0099bc234d55",
-    "parent": "在同一個資料夾也會發現`index.js`：",
-    "children": []
-  },
-  {
-    "type": "code",
-    "blockId": "79cf8d99-ffef-40c7-8e36-3f61dd9c161a",
-    "parent": "```javascript\nimport React from 'react'\nimport ReactDOM from 'react-dom/client'\nimport App from './App'\n\nReactDOM.createRoot(document.getElementById('root')).render(\n\t<React.StrictMode>\n\t\t<App />\n\t</React.StrictMode>\n)\n```",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "52a2239c-2428-456f-9139-e5a96fa34e2c",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "66327e6a-1f42-4dc1-bbcc-5e3b12a00134",
-    "parent": "想像網頁在建構的過程中，我們會透過 `ReactDOM` 這個代理人，來幫我們決定該繪製什麼畫面。",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "0f5eb5a1-dc4a-4c15-9dd5-6c6a087884b6",
+    "blockId": "13efe7bc-59d7-4592-bae5-f776287dac79",
     "parent": "",
     "children": []
   },
   {
     "type": "heading_2",
-    "blockId": "743ef063-3467-46ab-b3e2-312bae489b1d",
-    "parent": "## 什麼是[React Element](https://react.dev/reference/react/createElement)",
-    "children": []
-  },
-  {
-    "type": "callout",
-    "blockId": "84875ea6-fb01-4daa-8b3a-bd8e6d4d39b9",
-    "parent": "> 💡 接下來要介紹組成 Virtual DOM 最小的單位：React Element",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "828032c2-c3ad-4324-bb3b-e9c6338b0206",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "8d24cc35-0893-4311-8813-3e2c6c37d452",
-    "parent": "在 React 當中，我們常以 Self Closing Tag 呼叫一個物件（例如： `<Greeting/>`），事實上在編譯時呼叫了 `createElement` 這個方法去建立 virtaul DOM的節點：",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "73e97dc8-e66a-432d-aa4d-eed065d65637",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "code",
-    "blockId": "7c3618fe-51fa-4eef-ab8a-2bda7440a1d3",
-    "parent": "```javascript\nfunction Greeting({ name }) {\n\n  return createElement(\n    'h1', // HTML標籤\n    { className: 'greeting' }, //屬性\n    'Hello' // 子元素\n  );\n}\n```",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "f774beb7-20a8-454a-8f0b-d23b788efb33",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "11a7c619-dfcc-46ec-b841-f7d6e6baaa7e",
-    "parent": "而這些微小的解點構成了一個頁面的樣子，同時在 Component上能夠描述各式的標籤：",
-    "children": []
-  },
-  {
-    "type": "code",
-    "blockId": "218a0abb-e1c2-460d-851d-04311f16f857",
-    "parent": "```javascript\nfunction App() {\n  return (\n    <div>\n      <Greeting name=\"Amy\" />\n      <Greeting name=\"Sam\" />\n      <Greeting name=\"Johnny\" />\n    </div>\n  );\n}\n```",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "45252569-3b97-4ea0-9627-8d5c9fdf86b9",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "e2991092-9205-4c2b-ac50-541d68e4707b",
-    "parent": "然而我們的瀏覽器或編譯器並不真的認識 `<Greeting/>` 這個標籤，而是在 build time 時，透過轉譯器（如：Babel），將 `<Greeting/>` 轉譯成：",
-    "children": []
-  },
-  {
-    "type": "code",
-    "blockId": "3d51a434-d831-4e48-8dc3-66ab468fd2a2",
-    "parent": "```javascript\n createElement(’hi’, {className: “greeting”}, \"Hello\") \n```",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "abdcf865-dea9-4ef5-b73d-1d6f972eb8c2",
-    "parent": "",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "138999cc-d6da-4923-b6ec-5749b243cde5",
-    "parent": "並在瀏覽器運行時（run time）運作這些方法：",
-    "children": []
-  },
-  {
-    "type": "code",
-    "blockId": "b27f8e13-485c-42e3-b33b-721fd6a8b092",
-    "parent": "```javascript\n createElement(’hi’, {className: “greeting”}, \"Hello\") \n createElement(’hi’, {className: “greeting”}, \"Hello\") \n createElement(’hi’, {className: “greeting”}, \"Hello\") \n  \n  ...（假如有很多節點的話）\n```",
-    "children": []
-  },
-  {
-    "type": "paragraph",
-    "blockId": "38909c31-ffea-4605-b7ed-0f0d46ef36d0",
-    "parent": "",
+    "blockId": "cd66cb8a-84c5-4e0d-a382-25f4a0136477",
+    "parent": "## Primitive ",
     "children": []
   },
   {
     "type": "heading_2",
-    "blockId": "c265d5ee-01e6-4492-a1ac-9cdaeafef627",
-    "parent": "## 參考資料",
+    "blockId": "2b80587a-66ef-4800-bac8-3a78c1d07927",
+    "parent": "## Non-primitive ",
     "children": []
   },
   {
-    "type": "numbered_list_item",
-    "blockId": "d295c837-e19d-4f72-8d15-5293d2c9006e",
-    "parent": "1. **React 思維進化：一次打破常見的觀念誤解，躍升專業前端開發者**",
+    "type": "divider",
+    "blockId": "868d764a-2191-45ee-8829-936e3df0b042",
+    "parent": "---",
+    "children": []
+  },
+  {
+    "type": "heading_2",
+    "blockId": "34cd4448-3b79-4c6c-a9c5-926272884272",
+    "parent": "## 線性的資料結構",
+    "children": []
+  },
+  {
+    "type": "heading_3",
+    "blockId": "7575a909-2366-4978-833b-60bbdc8667cf",
+    "parent": "### 1. 陣列（Array）",
+    "children": [
+      {
+        "type": "code",
+        "blockId": "4b620b75-0d82-41c3-b85b-d0218150b271",
+        "parent": "```javascript\nconst arr = ['store', 1, 'whatever', 2, 'you want', 3]\n```",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "heading_3",
+    "blockId": "2e263e48-2d68-4831-97f8-a3c04f0fff27",
+    "parent": "### 2. 物件（Object、aka hash-table）",
+    "children": [
+      {
+        "type": "code",
+        "blockId": "a0b9cabd-be06-4d1e-ab07-b28d5318ba7f",
+        "parent": "```javascript\nconst obj = {\n    prop1: \"Hello!\",\n    prop3: function() {console.log(\"I'm a property dude!\")\n}}\n\nobj.prop3(); \"I'm a property dude!\"\n```",
+        "children": []
+      },
+      {
+        "type": "bulleted_list_item",
+        "blockId": "bf2c84df-4c55-4431-b715-2e9cf0790aa9",
+        "parent": "- Key-value pair",
+        "children": []
+      },
+      {
+        "type": "bulleted_list_item",
+        "blockId": "1714541c-c3e0-444e-824c-45c3638ba9c1",
+        "parent": "- 物件可以被三種方法呼叫：`object.property`、`object[”property”]`、`object.method()`",
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "blockId": "40cf7c73-6b38-437f-97a7-c1547ff10ca2",
+        "parent": "",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "heading_3",
+    "blockId": "060fc1a8-fea7-4dbc-aeb6-4ace4881d017",
+    "parent": "### 3. Stack",
+    "children": [
+      {
+        "type": "image",
+        "blockId": "9c60f46f-96a3-4ec4-8fe7-0902cb163f50",
+        "parent": "![後進先出（LIFO）](https://prod-files-secure.s3.us-west-2.amazonaws.com/a3329b51-a207-43ca-8d9d-85d01045e23a/0469274b-1559-4657-8550-e9b16f546e3f/annie-spratt-gl7joOaABlI-unsplash.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240526%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240526T230645Z&X-Amz-Expires=3600&X-Amz-Signature=063e9600abede03915023b9d562e98208969b0bdb78daf8f97d75edb6e15d131&X-Amz-SignedHeaders=host&x-id=GetObject)",
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "blockId": "3bf3aa0c-fa16-48da-a670-7bd2ecb61049",
+        "parent": "使用時機",
+        "children": []
+      },
+      {
+        "type": "callout",
+        "blockId": "9dcf4695-992e-4afd-962e-e19ef0c3e5d7",
+        "parent": "> 💡 類似陣列中 `pop`（移除）、`push`（新增）的特性",
+        "children": []
+      },
+      {
+        "type": "bulleted_list_item",
+        "blockId": "c61b7caf-ed23-40e2-8d12-881ce7887025",
+        "parent": "- JavaScript's call stack.",
+        "children": []
+      },
+      {
+        "type": "bulleted_list_item",
+        "blockId": "7e4f8209-6f69-4cf3-8359-ad72bde2fec2",
+        "parent": "- Managing function invocations in various programming languages.",
+        "children": []
+      },
+      {
+        "type": "bulleted_list_item",
+        "blockId": "cb5a2c49-226d-4f53-be0f-ecb1daa4e6bd",
+        "parent": "- The undo/redo functionality many programs offer.",
+        "children": []
+      },
+      {
+        "type": "toggle",
+        "blockId": "6311e1e2-1ebb-4a73-bad5-477c13e2615d",
+        "parent": "程式碼",
+        "children": [
+          {
+            "type": "code",
+            "blockId": "ad011b41-80db-4ea0-a4f3-cb4ccbed8b65",
+            "parent": "```javascript\n// We create a class for each node within the stack\nclass Node {\n    // Each node has two properties, its value and a pointer that indicates the node that follows\n    constructor(value){\n        this.value = value\n        this.next = null\n    }\n}\n\n// We create a class for the stack\nclass Stack {\n    // The stack has three properties, the first node, the last node and the stack size\n    constructor(){\n        this.first = null\n        this.last = null\n        this.size = 0\n    }\n    // The push method receives a value and adds it to the \"top\" of the stack\n    push(val){\n        var newNode = new Node(val)\n        if(!this.first){\n            this.first = newNode\n            this.last = newNode\n        } else {\n            var temp = this.first\n            this.first = newNode\n            this.first.next = temp\n        }\n        return ++this.size\n    }\n    // The pop method eliminates the element at the \"top\" of the stack and returns its value\n    pop(){\n        if(!this.first) return null\n        var temp = this.first\n        if(this.first === this.last){\n            this.last = null\n        }\n        this.first = this.first.next\n        this.size--\n        return temp.value\n    }\n}\n\nconst stck = new Stack\n\nstck.push(\"value1\")\nstck.push(\"value2\")\nstck.push(\"value3\")\n\nconsole.log(stck.first) /* \n        Node {\n        value: 'value3',\n        next: Node { value: 'value2', next: Node { value: 'value1', next: null } }\n        }\n    */\nconsole.log(stck.last) // Node { value: 'value1', next: null }\nconsole.log(stck.size) // 3\n\nstck.push(\"value4\")\nconsole.log(stck.pop()) // value4\n```",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "blockId": "599f9884-1baa-4352-b087-2cb0f7865bcd",
+        "parent": "",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "heading_3",
+    "blockId": "4a36f2b3-c8f0-4d0d-854a-f687f79dff13",
+    "parent": "### 4. Queues",
+    "children": [
+      {
+        "type": "image",
+        "blockId": "b5fc111e-9a64-4649-a422-2725bb30be6b",
+        "parent": "![先進先出（FIFO）](https://prod-files-secure.s3.us-west-2.amazonaws.com/a3329b51-a207-43ca-8d9d-85d01045e23a/539d0789-ed4c-4be9-b1ee-ef2bdde89b34/john-cameron-JWEwaHqSAHU-unsplash.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240526%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240526T230646Z&X-Amz-Expires=3600&X-Amz-Signature=ec355f7c1b829ad12923e9fd6d047e32c01e160e1ef9de2eda678a2c9dc5b35d&X-Amz-SignedHeaders=host&x-id=GetObject)",
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "blockId": "62428c32-27d9-4fd6-b853-d0657353cec2",
+        "parent": "使用時機",
+        "children": []
+      },
+      {
+        "type": "callout",
+        "blockId": "1fe9f70f-4bf3-45d9-9af3-37914ce41099",
+        "parent": "> 💡 類似陣列中 shift、pop的特性",
+        "children": []
+      },
+      {
+        "type": "bulleted_list_item",
+        "blockId": "2485e4e7-4a75-449c-93ce-6464912986a5",
+        "parent": "- Background tasks.",
+        "children": []
+      },
+      {
+        "type": "bulleted_list_item",
+        "blockId": "2296c716-459a-4b18-aad5-a04622fd3cf0",
+        "parent": "- Printing/[task processing](https://medium.com/swlh/background-job-and-queue-practical-application-use-cases-8cd1cc83afdf).",
+        "children": []
+      },
+      {
+        "type": "toggle",
+        "blockId": "9c416d74-e780-4d86-8351-58404d8d42b1",
+        "parent": "程式碼",
+        "children": [
+          {
+            "type": "code",
+            "blockId": "eb7efd45-114b-4acb-b7e1-0667415e9b4a",
+            "parent": "```javascript\n// We create a class for each node within the queue\nclass Node {\n    // Each node has two properties, its value and a pointer that indicates the node that follows\n    constructor(value){\n        this.value = value\n        this.next = null\n    }\n}\n\n// We create a class for the queue\nclass Queue {\n    // The queue has three properties, the first node, the last node and the queue size\n    constructor(){\n        this.first = null\n        this.last = null\n        this.size = 0\n    }\n    // The enqueue method receives a value and adds it to the \"end\" of the queue\n    enqueue(val){\n        var newNode = new Node(val)\n        if(!this.first){\n            this.first = newNode\n            this.last = newNode\n        } else {\n            this.last.next = newNode\n            this.last = newNode\n        }\n        return ++this.size\n    }\n    // The dequeue method eliminates the element at the \"beginning\" of the queue and returns its value\n    dequeue(){\n        if(!this.first) return null\n\n        var temp = this.first\n        if(this.first === this.last) {\n            this.last = null\n        }\n        this.first = this.first.next\n        this.size--\n        return temp.value\n    }\n}\n\nconst quickQueue = new Queue\n\nquickQueue.enqueue(\"value1\")\nquickQueue.enqueue(\"value2\")\nquickQueue.enqueue(\"value3\")\n\nconsole.log(quickQueue.first) /* \n        Node {\n            value: 'value1',\n            next: Node { value: 'value2', next: Node { value: 'value3', next: null } }\n        }\n    */\nconsole.log(quickQueue.last) // Node { value: 'value3, next: null }\nconsole.log(quickQueue.size) // 3\n\nquickQueue.enqueue(\"value4\")\nconsole.log(quickQueue.dequeue()) // value1\n```",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "blockId": "22c68a83-a52a-4a3f-b29f-2c2f383fd45c",
+        "parent": "",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "heading_3",
+    "blockId": "c7ba1e2f-7ef4-4802-874a-6eae1a7df937",
+    "parent": "### 5. Linked Lists",
+    "children": [
+      {
+        "type": "image",
+        "blockId": "10b5ce5e-2ee4-4efb-a8c1-796a275d363c",
+        "parent": "![linked-list.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a3329b51-a207-43ca-8d9d-85d01045e23a/5869c12b-9c87-4e77-bf89-f62beba20a74/linked-list.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240526%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240526T230647Z&X-Amz-Expires=3600&X-Amz-Signature=b1a5f195b99a51b4cd4bdb75776b360175a3fa1a0b05d3b5167b726c9f7d0cb9&X-Amz-SignedHeaders=host&x-id=GetObject)",
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "blockId": "c590af55-b1dd-4207-bf36-05b0c6fd877c",
+        "parent": "在 Linked List 當中，每一組資料都被視為一個節點，同時每一個節點也會指向下一個節點。",
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "blockId": "f60a1bf2-b2d6-4a9d-a788-d88ec03916f3",
+        "parent": "",
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "blockId": "7086d634-b868-4e90-8c27-dd1a03002154",
+        "parent": "同時有分成**單向（Singly Linked List）**、**雙向（Double Linked List）**的型態",
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "blockId": "4c568968-333d-4705-a784-c493a35c8c78",
+        "parent": "",
+        "children": []
+      },
+      {
+        "type": "toggle",
+        "blockId": "56365af1-84fe-4267-bd94-17880dc3c9b4",
+        "parent": "程式碼：Singly Linked List",
+        "children": [
+          {
+            "type": "code",
+            "blockId": "3e1d6ca2-2f96-42a6-93f8-4d57cc5ec38e",
+            "parent": "```javascript\n// We create a class for each node within the list\nclass Node{\n    // Each node has two properties, its value and a pointer that indicates the node that follows\n    constructor(val){\n        this.val = val\n        this.next = null\n    }\n}\n\n// We create a class for the list\nclass SinglyLinkedList{\n    // The list has three properties, the head, the tail and the list size\n    constructor(){\n        this.head = null\n        this.tail = null\n        this.length = 0\n    }\n    // The push method takes a value as parameter and assigns it as the tail of the list\n    push(val) {\n        const newNode = new Node(val)\n        if (!this.head){\n            this.head = newNode\n            this.tail = this.head\n        } else {\n            this.tail.next = newNode\n            this.tail = newNode\n        }\n        this.length++\n        return this\n    }\n    // The pop method removes the tail of the list\n    pop() {\n        if (!this.head) return undefined\n        const current = this.head\n        const newTail = current\n        while (current.next) {\n            newTail = current\n            current = current.next\n        }\n        this.tail = newTail\n        this.tail.next = null\n        this.length--\n        if (this.length === 0) {\n            this.head = null\n            this.tail = null\n        }\n        return current\n    }\n    // The shift method removes the head of the list\n    shift() {\n        if (!this.head) return undefined\n        var currentHead = this.head\n        this.head = currentHead.next\n        this.length--\n        if (this.length === 0) {\n            this.tail = null\n        }\n        return currentHead\n    }\n    // The unshift method takes a value as parameter and assigns it as the head of the list\n    unshift(val) {\n        const newNode = new Node(val)\n        if (!this.head) {\n            this.head = newNode\n            this.tail = this.head\n        }\n        newNode.next = this.head\n        this.head = newNode\n        this.length++\n        return this\n    }\n    // The get method takes an index number as parameter and returns the value of the node at that index\n    get(index) {\n        if(index < 0 || index >= this.length) return null\n        const counter = 0\n        const current = this.head\n        while(counter !== index) {\n            current = current.next\n            counter++\n        }\n        return current\n    }\n    // The set method takes an index number and a value as parameters, and modifies the node value at the given index in the list\n    set(index, val) {\n        const foundNode = this.get(index)\n        if (foundNode) {\n            foundNode.val = val\n            return true\n        }\n        return false\n    }\n    // The insert method takes an index number and a value as parameters, and inserts the value at the given index in the list\n    insert(index, val) {\n        if (index < 0 || index > this.length) return false\n        if (index === this.length) return !!this.push(val)\n        if (index === 0) return !!this.unshift(val)\n\n        const newNode = new Node(val)\n        const prev = this.get(index - 1)\n        const temp = prev.next\n        prev.next = newNode\n        newNode.next = temp\n        this.length++\n        return true\n    }\n    // The remove method takes an index number as parameter and removes the node at the given index in the list\n    remove(index) {\n        if(index < 0 || index >= this.length) return undefined\n        if(index === 0) return this.shift()\n        if(index === this.length - 1) return this.pop()\n        const previousNode = this.get(index - 1)\n        const removed = previousNode.next\n        previousNode.next = removed.next\n        this.length--\n        return removed\n    }\n    // The reverse method reverses the list and all pointers so that the head becomes the tail and the tail becomes the head\n    reverse(){\n      const node = this.head\n      this.head = this.tail\n      this.tail = node\n      let next\n      const prev = null\n      for(let i = 0; i < this.length; i++) {\n        next = node.next\n        node.next = prev\n        prev = node\n        node = next\n      }\n      return this\n    }\n}\n```",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "toggle",
+        "blockId": "181c0a05-333f-4361-9b33-c0cb46bb4fd8",
+        "parent": "程式碼：Doubly Linked List",
+        "children": [
+          {
+            "type": "code",
+            "blockId": "f4e30e35-0d23-4f61-80d7-f2a213c23e93",
+            "parent": "```javascript\n// We create a class for each node within the list\nclass Node{\n    // Each node has three properties, its value, a pointer that indicates the node that follows and a pointer that indicates the previous node\n    constructor(val){\n        this.val = val;\n        this.next = null;\n        this.prev = null;\n    }\n}\n\n// We create a class for the list\nclass DoublyLinkedList {\n    // The list has three properties, the head, the tail and the list size\n    constructor(){\n        this.head = null\n        this.tail = null\n        this.length = 0\n    }\n    // The push method takes a value as parameter and assigns it as the tail of the list\n    push(val){\n        const newNode = new Node(val)\n        if(this.length === 0){\n            this.head = newNode\n            this.tail = newNode\n        } else {\n            this.tail.next = newNode\n            newNode.prev = this.tail\n            this.tail = newNode\n        }\n        this.length++\n        return this\n    }\n    // The pop method removes the tail of the list\n    pop(){\n        if(!this.head) return undefined\n        const poppedNode = this.tail\n        if(this.length === 1){\n            this.head = null\n            this.tail = null\n        } else {\n            this.tail = poppedNode.prev\n            this.tail.next = null\n            poppedNode.prev = null\n        }\n        this.length--\n        return poppedNode\n    }\n    // The shift method removes the head of the list\n    shift(){\n        if(this.length === 0) return undefined\n        const oldHead = this.head\n        if(this.length === 1){\n            this.head = null\n            this.tail = null\n        } else{\n            this.head = oldHead.next\n            this.head.prev = null\n            oldHead.next = null\n        }\n        this.length--\n        return oldHead\n    }\n    // The unshift method takes a value as parameter and assigns it as the head of the list\n    unshift(val){\n        const newNode = new Node(val)\n        if(this.length === 0) {\n            this.head = newNode\n            this.tail = newNode\n        } else {\n            this.head.prev = newNode\n            newNode.next = this.head\n            this.head = newNode\n        }\n        this.length++\n        return this\n    }\n    // The get method takes an index number as parameter and returns the value of the node at that index\n    get(index){\n        if(index < 0 || index >= this.length) return null\n        let count, current\n        if(index <= this.length/2){\n            count = 0\n            current = this.head\n            while(count !== index){\n                current = current.next\n                count++\n            }\n        } else {\n            count = this.length - 1\n            current = this.tail\n            while(count !== index){\n                current = current.prev\n                count--\n            }\n        }\n        return current\n    }\n    // The set method takes an index number and a value as parameters, and modifies the node value at the given index in the list\n    set(index, val){\n        var foundNode = this.get(index)\n        if(foundNode != null){\n            foundNode.val = val\n            return true\n        }\n        return false\n    }\n    // The insert method takes an index number and a value as parameters, and inserts the value at the given index in the list\n    insert(index, val){\n        if(index < 0 || index > this.length) return false\n        if(index === 0) return !!this.unshift(val)\n        if(index === this.length) return !!this.push(val)\n\n        var newNode = new Node(val)\n        var beforeNode = this.get(index-1)\n        var afterNode = beforeNode.next\n\n        beforeNode.next = newNode, newNode.prev = beforeNode\n        newNode.next = afterNode, afterNode.prev = newNode\n        this.length++\n        return true\n    }\n}\n```",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "blockId": "29cbc5b0-8fe1-41db-8658-ae4708d5e542",
+        "parent": "",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "divider",
+    "blockId": "65ec87ce-4d15-4093-94f5-1faccb7bcae8",
+    "parent": "---",
+    "children": []
+  },
+  {
+    "type": "heading_2",
+    "blockId": "ad31a395-b239-4afb-813e-7d40b9cc8097",
+    "parent": "## 非線性的資料結構",
+    "children": []
+  },
+  {
+    "type": "heading_3",
+    "blockId": "1c63b65e-0d8d-4928-84f1-0011d33e67e1",
+    "parent": "### 6. Trees",
+    "children": [
+      {
+        "type": "bulleted_list_item",
+        "blockId": "e173bd94-c9d3-40dc-9ce6-7de0a8a99f0d",
+        "parent": "- **only valid connection between nodes is from parent to child** .",
+        "children": []
+      },
+      {
+        "type": "image",
+        "blockId": "3dcd0f1a-b802-4cad-9dfb-0ed5e6df7f6a",
+        "parent": "![images.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a3329b51-a207-43ca-8d9d-85d01045e23a/9c2734a3-0af0-4f4e-86fd-0474ca161dcb/images.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240526%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240526T230651Z&X-Amz-Expires=3600&X-Amz-Signature=ea9f797433414b3df6aeb9aa35114cd2adf8a202eee7b69541db1fbb964b95ca&X-Amz-SignedHeaders=host&x-id=GetObject)",
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "blockId": "81928db7-b7f3-43da-a6b4-8e94a2c90f47",
+        "parent": "用途：",
+        "children": []
+      },
+      {
+        "type": "bulleted_list_item",
+        "blockId": "5498695d-4cd9-430f-8a0e-480f1f5bcf3a",
+        "parent": "- The DOM model.",
+        "children": []
+      },
+      {
+        "type": "bulleted_list_item",
+        "blockId": "f639b97d-838c-43e0-a536-96de35e76c67",
+        "parent": "- Situation analysis in artificial intelligence.",
+        "children": []
+      },
+      {
+        "type": "bulleted_list_item",
+        "blockId": "524d2615-bf7b-46eb-9eee-ecaf4dee0905",
+        "parent": "- File folders in operating systems.",
+        "children": [
+          {
+            "type": "heading_3",
+            "blockId": "1d10c362-e525-47c1-b489-f177617b57b7",
+            "parent": "### Binary Trees",
+            "children": [
+              {
+                "type": "quote",
+                "blockId": "c4f513b6-d347-4485-8e1c-d41aee83981d",
+                "parent": "> Binary trees are a type of tree in which each node has a maximum of two children.",
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "blockId": "efb6d4de-cdf2-4b6e-bacd-82349fc73bca",
+                "parent": "",
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "blockId": "28cfb27b-9549-46dc-8430-dc369f7efa69",
+                "parent": "二元樹搜尋法（Binary Tree Search）",
+                "children": []
+              },
+              {
+                "type": "image",
+                "blockId": "6cd343ae-dffd-49cc-add4-eaa9ff4a1f80",
+                "parent": "![download--1-.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a3329b51-a207-43ca-8d9d-85d01045e23a/4a459802-325e-4c4e-824b-f633efd21d5b/download--1-.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240526%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240526T230651Z&X-Amz-Expires=3600&X-Amz-Signature=e410a5f7109421a1b4e9613cc68c55f9dc771ad01694d4bfc920e880ab0c2614&X-Amz-SignedHeaders=host&x-id=GetObject)",
+                "children": []
+              },
+              {
+                "type": "bulleted_list_item",
+                "blockId": "f2e3f8e8-325f-4a39-a5de-bce78572fafe",
+                "parent": "- Check if there's a root node.",
+                "children": []
+              },
+              {
+                "type": "bulleted_list_item",
+                "blockId": "e5359e12-4007-4b09-beed-fff03807e417",
+                "parent": "- If there is, check if the value to add/delete is greater or smaller than the node.",
+                "children": []
+              },
+              {
+                "type": "bulleted_list_item",
+                "blockId": "ef6947e3-eba5-43ba-977a-a8d21f54d9d5",
+                "parent": "- If it is smaller, check if there is a node to the left and repeat the previous operation. If there's not, add/remove the node in that position.",
+                "children": []
+              },
+              {
+                "type": "bulleted_list_item",
+                "blockId": "6eadd58f-b2f3-42b1-b51a-6fb1cadf2a70",
+                "parent": "- If it is greater, check if there is a node to the right and repeat the previous operation. If there's not, add/remove the node in that position.",
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "blockId": "6f7afc64-aef2-47b7-8095-344533d7c80a",
+                "parent": "",
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "blockId": "41701039-6078-4994-ae3b-9f21f6e5407f",
+                "parent": "❓如何找4放在哪？",
+                "children": []
+              },
+              {
+                "type": "numbered_list_item",
+                "blockId": "ecbf29c7-e6a7-42b2-b257-4d21acc6ac06",
+                "parent": "1. 4 > 2 ⇒ 往右",
+                "children": []
+              },
+              {
+                "type": "numbered_list_item",
+                "blockId": "2cc2875b-b9da-4d26-8522-922f5c24d9b7",
+                "parent": "2. 4",
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "blockId": "57a07bca-9989-4f6f-b9e5-4494ab4d6dff",
+                "parent": "",
+                "children": []
+              },
+              {
+                "type": "toggle",
+                "blockId": "6f55e5f2-7c12-435c-a57e-fe8d4db918ed",
+                "parent": "程式碼：Binary Search",
+                "children": [
+                  {
+                    "type": "code",
+                    "blockId": "d9af84c1-0d0d-4863-91a2-f306ffdd1100",
+                    "parent": "```javascript\n// We create a class for each node within the tree\nclass Node{\n    // Each node has three properties, its value, a pointer that indicates the node to its left and a pointer that indicates the node to its right\n    constructor(value){\n        this.value = value\n        this.left = null\n        this.right = null\n    }\n}\n// We create a class for the BST\nclass BinarySearchTree {\n    // The tree has only one property which is its root node\n    constructor(){\n        this.root = null\n    }\n    // The insert method takes a value as parameter and inserts the value in its corresponding place within the tree\n    insert(value){\n        const newNode = new Node(value)\n        if(this.root === null){\n            this.root = newNode\n            return this\n        }\n        let current = this.root\n        while(true){\n            if(value === current.value) return undefined\n            if(value < current.value){\n                if(current.left === null){\n                    current.left = newNode\n                    return this\n                }\n                current = current.left\n            } else {\n                if(current.right === null){\n                    current.right = newNode\n                    return this\n                } \n                current = current.right\n            }\n        }\n    }\n    // The find method takes a value as parameter and iterates through the tree looking for that value\n    // If the value is found, it returns the corresponding node and if it's not, it returns undefined\n    find(value){\n        if(this.root === null) return false\n        let current = this.root,\n            found = false\n        while(current && !found){\n            if(value < current.value){\n                current = current.left\n            } else if(value > current.value){\n                current = current.right\n            } else {\n                found = true\n            }\n        }\n        if(!found) return undefined\n        return current\n    }\n    // The contains method takes a value as parameter and returns true if the value is found within the tree\n    contains(value){\n        if(this.root === null) return false\n        let current = this.root,\n            found = false\n        while(current && !found){\n            if(value < current.value){\n                current = current.left\n            } else if(value > current.value){\n                current = current.right\n            } else {\n                return true\n            }\n        }\n        return false\n    }\n}\n```",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading_3",
+            "blockId": "8c4c68fa-f842-4d09-b136-e65a45d0aef7",
+            "parent": "### Heaps",
+            "children": [
+              {
+                "type": "callout",
+                "blockId": "422cc00d-2902-422c-9033-9dd6b4b3220b",
+                "parent": "> 💡 特色：  \n> 1. 子節點的層級相同  \n> 2. 資料排序很緊湊，如果Parent Node有空的節點，應該馬上補上",
+                "children": []
+              },
+              {
+                "type": "bulleted_list_item",
+                "blockId": "a2792451-d710-4612-8b09-98f280639ace",
+                "parent": "- MaxHeaps: parent nodes are always greater than its children",
+                "children": []
+              },
+              {
+                "type": "image",
+                "blockId": "a80416a6-162a-4299-b2c9-df1a6de0ea79",
+                "parent": "![max Heap](https://prod-files-secure.s3.us-west-2.amazonaws.com/a3329b51-a207-43ca-8d9d-85d01045e23a/a363cc4b-722b-46f5-b010-1d6cc49974b5/max_heap_example-2.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240526%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240526T230654Z&X-Amz-Expires=3600&X-Amz-Signature=26c27522c722f33c25350e2b2fa3c62d0545d130d772376ac7e6c97b1a754f32&X-Amz-SignedHeaders=host&x-id=GetObject)",
+                "children": []
+              },
+              {
+                "type": "bulleted_list_item",
+                "blockId": "1348bf23-2ec2-44a4-9d85-1b92d64497b7",
+                "parent": "- MinHeaps: parent nodes are always smaller than its children.",
+                "children": []
+              },
+              {
+                "type": "image",
+                "blockId": "753a04c8-d39e-4e81-ba5c-fd5a417bc233",
+                "parent": "![Min Heap](https://prod-files-secure.s3.us-west-2.amazonaws.com/a3329b51-a207-43ca-8d9d-85d01045e23a/171ba765-7b9d-473d-bf23-1c715f633914/min_heap_example.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240526%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240526T230654Z&X-Amz-Expires=3600&X-Amz-Signature=da44984419e253eacc474b2c271fe42781421a3229c168844078aa9fb5fad99d&X-Amz-SignedHeaders=host&x-id=GetObject)",
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "blockId": "c6c53fcd-dc18-4304-b34c-41a9132855ea",
+                "parent": "",
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "blockId": "3c36a0ed-4627-4608-a5ba-574916177a89",
+                "parent": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading_3",
+    "blockId": "1307c223-4f72-490b-a39e-50e92d3eafb2",
+    "parent": "### 7. Graphs",
+    "children": [
+      {
+        "type": "callout",
+        "blockId": "31d3169d-e845-4480-8023-5bd6165c463c",
+        "parent": "> 💡 Unlike trees, graphs don't have root and leaf nodes, nor a \"head\" or a \"tail\". ",
+        "children": []
+      },
+      {
+        "type": "image",
+        "blockId": "eb0a76af-b180-446b-b8c1-011064f8f1c7",
+        "parent": "![images-1.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a3329b51-a207-43ca-8d9d-85d01045e23a/fdc847c1-1147-4ae1-be3f-61fdac68cfc7/images-1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240526%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240526T230654Z&X-Amz-Expires=3600&X-Amz-Signature=bc5e02779aa2dfb53f6c81cdda60c70e341a7fec65accac913b0ef56b7251443&X-Amz-SignedHeaders=host&x-id=GetObject)",
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "blockId": "4ec3f560-aa45-4e9f-a425-6b68df169922",
+        "parent": "用途：",
+        "children": []
+      },
+      {
+        "type": "bulleted_list_item",
+        "blockId": "6b8e42ca-1552-4065-ba0e-1499cf755af0",
+        "parent": "- Social networks",
+        "children": []
+      },
+      {
+        "type": "bulleted_list_item",
+        "blockId": "fe5d6a9d-0e44-4855-bc57-5405fb9dd95b",
+        "parent": "- Geolocalizaton",
+        "children": []
+      },
+      {
+        "type": "bulleted_list_item",
+        "blockId": "82b923bb-f04a-4f27-88b3-bd9125d3093e",
+        "parent": "- Recommendation systems",
+        "children": []
+      },
+      {
+        "type": "toggle",
+        "blockId": "22ab8ab6-568f-4e30-bd81-e1519f18d17f",
+        "parent": "程式碼：",
+        "children": [
+          {
+            "type": "code",
+            "blockId": "f5be2037-296c-471b-bc72-6b9a0c503193",
+            "parent": "```javascript\n// We create a class for the graph\nclass Graph{\n    // The graph has only one property which is the adjacency list\n    constructor() {\n        this.adjacencyList = {}\n    }\n    // The addNode method takes a node value as parameter and adds it as a key to the adjacencyList if it wasn't previously present\n    addNode(node) {\n        if (!this.adjacencyList[node]) this.adjacencyList[node] = []\n    }\n    // The addConnection takes two nodes as parameters, and it adds each node to the other's array of connections.\n    addConnection(node1,node2) {\n        this.adjacencyList[node1].push(node2)\n        this.adjacencyList[node2].push(node1)\n    }\n    // The removeConnection takes two nodes as parameters, and it removes each node from the other's array of connections.\n    removeConnection(node1,node2) {\n        this.adjacencyList[node1] = this.adjacencyList[node1].filter(v => v !== node2)\n        this.adjacencyList[node2] = this.adjacencyList[node2].filter(v => v !== node1)\n    }\n    // The removeNode method takes a node value as parameter. It removes all connections to that node present in the graph and then deletes the node key from the adj list.\n    removeNode(node){\n        while(this.adjacencyList[node].length) {\n            const adjacentNode = this.adjacencyList[node].pop()\n            this.removeConnection(node, adjacentNode)\n        }\n        delete this.adjacencyList[node]\n    }\n}\n\nconst Argentina = new Graph()\nArgentina.addNode(\"Buenos Aires\")\nArgentina.addNode(\"Santa fe\")\nArgentina.addNode(\"Córdoba\")\nArgentina.addNode(\"Mendoza\")\nArgentina.addConnection(\"Buenos Aires\", \"Córdoba\")\nArgentina.addConnection(\"Buenos Aires\", \"Mendoza\")\nArgentina.addConnection(\"Santa fe\", \"Córdoba\")\n\nconsole.log(Argentina)\n// Graph {\n//     adjacencyList: {\n//         'Buenos Aires': [ 'Córdoba', 'Mendoza' ],\n//         'Santa fe': [ 'Córdoba' ],\n//         'Córdoba': [ 'Buenos Aires', 'Santa fe' ],\n//         Mendoza: [ 'Buenos Aires' ]\n//     }\n// }\n```",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading_1",
+    "blockId": "0630acb4-8a41-446d-89dc-82c14786421d",
+    "parent": "# 參考資料",
+    "children": []
+  },
+  {
+    "type": "bookmark",
+    "blockId": "b6279304-7de4-49aa-b6c0-5ecf12cb926c",
+    "parent": "[bookmark](https://www.freecodecamp.org/news/data-structures-in-javascript-with-examples/)",
+    "children": []
+  },
+  {
+    "type": "bookmark",
+    "blockId": "4b2c8f21-c441-47c5-a401-f0e75f745574",
+    "parent": "[bookmark](https://break0344.medium.com/data-structures-and-algorithms-0-720c04cb8082)",
+    "children": []
+  },
+  {
+    "type": "bookmark",
+    "blockId": "c718c84f-a330-411e-a930-dd9deb6a50a4",
+    "parent": "[bookmark](https://medium.com/appworks-school/初學者學演算法-談什麼是演算法和時間複雜度-b1f6908e4b80)",
+    "children": []
+  },
+  {
+    "type": "bookmark",
+    "blockId": "9f79a6fa-cac4-47a3-9445-ef15abf77eca",
+    "parent": "[bookmark](https://ithelp.ithome.com.tw/articles/10322467)",
+    "children": []
+  },
+  {
+    "type": "paragraph",
+    "blockId": "4396ee2b-03ea-454b-9eff-95c370d2f916",
+    "parent": "",
     "children": []
   }
 ]

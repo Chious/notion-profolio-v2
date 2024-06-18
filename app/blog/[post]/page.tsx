@@ -1,16 +1,24 @@
-"use client";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { Suspense } from "react";
 
-import React from "react";
-import Hello from "@/app/data/post/hello.mdx";
+async function getPostData(post: string) {
+  const res = await fetch(`http://localhost:3000/api/posts`);
 
-export default function Page({
-  params: { post },
-}: {
-  params: { post: string };
-}) {
+  if (!res.ok) {
+    throw new Error("Failed to load post data");
+  }
+
+  return res.json();
+}
+
+export default async function Home() {
+  const post = await getPostData("react-virtual-dom");
+
   return (
-    <div className="flex justify-center items-center text-white">
-      <Hello />
+    <div className="prose prose-h1:text-white prose-h2:text-white prose-p:text-white prose-li:text-white prose-h3:text-white prose-strong:text-white">
+      <Suspense fallback={<div>Loading...</div>}>
+        <MDXRemote source={post} />
+      </Suspense>
     </div>
   );
 }
