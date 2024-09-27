@@ -1,6 +1,11 @@
 import React from "react";
 
 const Pagination: React.FC = () => {
+  const handleScrollToProjects = () => {
+    const projects = document.getElementById("projects");
+    projects?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <nav
       aria-label="pagination"
@@ -9,38 +14,38 @@ const Pagination: React.FC = () => {
     >
       <ul className="flex flex-row items-center gap-1">
         <li>
-          <a
+          <p
             className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-1 pl-2.5 text-green"
             aria-label="Go to previous page"
-            href="#"
+            onClick={handleScrollToProjects}
           >
             <PrevIcon />
             <span>Previous</span>
-          </a>
+          </p>
         </li>
         {
           //Array from 1~5 return li
           Array.from({ length: 5 }).map((_, index) => (
             <li key={index}>
-              <a
+              <p
+                onClick={handleScrollToProjects}
                 className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10 text-white"
-                href="#"
               >
                 {index + 1}
-              </a>
+              </p>
             </li>
           ))
         }
 
         <li>
-          <a
+          <p
             className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-1 pr-2.5 text-green"
             aria-label="Go to next page"
-            href="#"
+            onClick={handleScrollToProjects}
           >
             <span>Next</span>
             <NextIcon />
-          </a>
+          </p>
         </li>
       </ul>
     </nav>

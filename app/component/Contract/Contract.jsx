@@ -44,7 +44,7 @@ function Contract(props, ref) {
 
   return (
     <section
-      className=" bg-light-black h-450 flex flex-col items-center mt-20 p-3 relative -left-[120px] pl-[120px] pr-[120px] w-screen"
+      className=" bg-light-black h-450 flex flex-col items-center mt-20 relative -left-[120px] pl-[120px] pr-[120px] w-screen p-4"
       ref={ref}
     >
       <div className="mr-120 ml-120 grid lg:grid-cols-2 gap-2">
@@ -123,7 +123,7 @@ function Contract(props, ref) {
         </div>
         <AlertDialog open={open} setOpen={setOpen} />
       </div>
-      <nav className="flex justify-between items-center w-full">
+      <nav className="flex justify-between items-center w-full p-4">
         <h2 className="text-white">{`Sam's Blog`}</h2>
         <div className="too-bar flex gap-3 flex-row">
           <Link href="https://github.com/Chious">

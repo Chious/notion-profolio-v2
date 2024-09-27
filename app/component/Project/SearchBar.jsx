@@ -43,12 +43,12 @@ export default function SearchBar() {
   const uniqueTags = [...new Set(flattenedTags)];
 
   return (
-    <div className="flex">
+    <div className="flex w-96">
       <Autocomplete
         disablePortal
         id="combo-box-demo"
         options={uniqueTags}
-        className="w-72 h-12 bg-white rounded-md"
+        className="flex-1 max-w-72 h-12 bg-white rounded-md outline-none"
         onChange={handleChange}
         renderOption={(props, option) => {
           return (
@@ -58,7 +58,24 @@ export default function SearchBar() {
           );
         }}
         renderInput={(params) => (
-          <TextField {...params} InputProps={{ ...params.InputProps }} />
+          <TextField
+            {...params}
+            InputProps={{ ...params.InputProps }}
+            className="outline-none"
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  border: "none",
+                },
+                "&.Mui-focused fieldset": {
+                  border: "none",
+                },
+                "&:hover fieldset": {
+                  border: "none",
+                },
+              },
+            }}
+          />
         )}
       />
       <button

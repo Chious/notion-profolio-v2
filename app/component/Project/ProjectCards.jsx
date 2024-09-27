@@ -1,18 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Card, Grid, Box, Button, Stack, Skeleton } from "@mui/material";
+import { Skeleton } from "@mui/material";
 import Link from "next/link";
-import Image from "mui-image";
+import Image from "next/image";
 
 export const ProjectCard = ({ data }) => {
-  const [load, setLoad] = useState(false);
   const { cover, Name, LivePage, Code, Tags } = data;
   const [isHovered, setHover] = useState(false);
-
-  const handleLoad = () => {
-    setLoad(true);
-  };
 
   const printtag = Tags.map((e, i) => {
     return (
@@ -51,23 +46,28 @@ export const ProjectCard = ({ data }) => {
             </a>
           </div>
         )}
-        {!load && (
-          <Skeleton variant="rectangular" className="w-full h-96 bg-gray-500" />
-        )}
-
         <Image
           alt=""
           src={cover}
-          className="rounded-md relative z-0"
-          width="100%"
-          height="370px"
-          fit="cover"
-          duration={0}
-          onLoad={handleLoad}
+          className="rounded-md relative z-0 aspect-[4/3] object-cover h-auto w-full"
+          width={500}
+          height={300}
         />
       </div>
       <p className="text-white font-bold pl-2 pr-2">{Name}</p>
       <div className="h-fit flex flex-row gap-3">{printtag}</div>
     </div>
   );
+};
+
+export const ProjectCards = ({ data }) => {
+  return data.length > 0
+    ? data.map((item, i) => <ProjectCard data={item} key={i} />)
+    : null;
+};
+
+export const SkeletonCards = () => {
+  return Array.from({ length: 6 }).map((_, i) => (
+    <Skeleton variant="rectangular" width="100%" height={400} key={i} />
+  ));
 };
