@@ -2,8 +2,8 @@
 
 import { Skeleton } from '@mui/material';
 import { ProjectCard, ProjectCards, SkeletonCards } from './ProjectCards';
-import FetchFromNotion from './FetchFromNotion';
-import { Suspense, useEffect, useRef, useState, lazy } from 'react';
+import FetchProjectsFromNotion from '@/libs/FetchFromNotion';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { useApp } from '@/contexts/AppContext';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
@@ -14,7 +14,7 @@ export default function Project() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    FetchFromNotion().then(data => {
+    FetchProjectsFromNotion().then(data => {
       setProject(data);
       setDisplayProject({
         page: 1,

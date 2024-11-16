@@ -2,6 +2,8 @@
 
 export default function RootLayout({ params: { post }, children }: any) {
   return (
-    <div>{post.length > 0 ? <>{children}</> : <p>Loading posts...</p>}</div>
+    <div className="absolute top-0">
+      {post.length > 0 ? <>{children}</> : <p>Loading posts...</p>}
+    </div>
   );
 }

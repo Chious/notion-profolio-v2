@@ -1,9 +1,8 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Skeleton } from "@mui/material";
-import Link from "next/link";
-import Image from "next/image";
+import { useState } from 'react';
+import { Skeleton } from '@mui/material';
+import Image from 'next/image';
 
 export const ProjectCard = ({ data }) => {
   const { cover, Name, LivePage, Code, Tags } = data;
@@ -26,7 +25,7 @@ export const ProjectCard = ({ data }) => {
         className="Image rounded-md"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        style={{ width: "100%", height: "100%", position: "relative" }}
+        style={{ width: '100%', height: '100%', position: 'relative' }}
       >
         {isHovered && (
           <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 rounded-md z-20 flex flex-col justify-center items-center gap-5">

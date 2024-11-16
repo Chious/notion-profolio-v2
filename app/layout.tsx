@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <PageNavbar />
         <main
-          className="relative top-[56px] bg-black pr-[120px] pl-[120px]"
+          className="relative top-[56px] bg-black pr-[120px] pl-[120px] overflow-scroll"
           style={{ minHeight: 'calc(100vh - 56px)' }}
         >
           {children}
