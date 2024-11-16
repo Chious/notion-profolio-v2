@@ -1,5 +1,5 @@
-import React from "react";
-import Card_Blog from "../component/Card/Card_Blog";
+import React from 'react';
+import Card_Blog from '@/component/Card/Card_Blog';
 
 export default function Page() {
   return (

@@ -1,8 +1,7 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { Button } from "@mui/material";
-import TabGallery from "@/app/component/Protfolio/TabGallery/TabGallery";
+import Image from 'next/image';
+import { Button } from '@mui/material';
 
 export default function Protfolio({ componentRef }) {
   return (
@@ -27,19 +26,19 @@ export default function Protfolio({ componentRef }) {
               building human-centered web pages that provide solutions to users' problems.`}
         </p>
         <p
-          style={{ color: "#4EE1A0" }}
+          style={{ color: '#4EE1A0' }}
         >{`#Sociology #Social Innovation #Statistic`}</p>
         <Button
           sx={{
             width: 150,
             borderBottom: 5,
             borderRadius: 0,
-            borderColor: "#4EE1A0",
-            color: "white",
+            borderColor: '#4EE1A0',
+            color: 'white',
           }}
           onClick={() =>
             componentRef.current?.scrollIntoView({
-              behavior: "smooth",
+              behavior: 'smooth',
             })
           }
         >

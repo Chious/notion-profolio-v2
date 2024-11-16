@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import Protfolio from "@/app/component/Protfolio/Protfolio";
-import Project from "@/app/component/Project/Project";
-import Contract from "@/app/component/Contract/Contract";
-import { useRef } from "react";
-import { AppProvider } from "@/app/contexts/AppContext";
+import Protfolio from '@/component/Protfolio/Protfolio';
+import Project from '@/component/Project/Project';
+import Contract from '@/component/Contract/Contract';
+import { useRef } from 'react';
+import { AppProvider } from '@/contexts/AppContext';
 
 export default function Home() {
   const componentRef = useRef(null);

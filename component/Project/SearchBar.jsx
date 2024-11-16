@@ -1,7 +1,7 @@
-import { useState } from "react";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
-import { useApp } from "@/app/contexts/AppContext";
+import { useState } from 'react';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import { useApp } from '@/contexts/AppContext';
 
 export default function SearchBar() {
   const { project, setDisplayProject, setFilterProject } = useApp();
@@ -14,7 +14,7 @@ export default function SearchBar() {
   // filter data after submit
 
   const filtered = ({ data, select }) => {
-    return data.filter((item) => item.Tags.some((tag) => tag.name === select));
+    return data.filter(item => item.Tags.some(tag => tag.name === select));
   };
 
   const handleSubmit = () => {
@@ -31,12 +31,12 @@ export default function SearchBar() {
   };
 
   // Get tag
-  const tagNames = project.map((item) => {
-    return item.Tags.map((tag) => tag.name);
+  const tagNames = project.map(item => {
+    return item.Tags.map(tag => tag.name);
   });
 
   // Flatten the array of arrays into one array
-  const flatten = (arr) => arr.flat();
+  const flatten = arr => arr.flat();
   const flattenedTags = flatten(tagNames);
 
   // Get unique values using Set and spread
@@ -57,21 +57,21 @@ export default function SearchBar() {
             </li>
           );
         }}
-        renderInput={(params) => (
+        renderInput={params => (
           <TextField
             {...params}
             InputProps={{ ...params.InputProps }}
             className="outline-none"
             sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  border: "none",
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  border: 'none',
                 },
-                "&.Mui-focused fieldset": {
-                  border: "none",
+                '&.Mui-focused fieldset': {
+                  border: 'none',
                 },
-                "&:hover fieldset": {
-                  border: "none",
+                '&:hover fieldset': {
+                  border: 'none',
                 },
               },
             }}

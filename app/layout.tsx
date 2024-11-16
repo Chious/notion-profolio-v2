@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import PageNavbar from "@/app/component/PageNavbar";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import PageNavbar from '@/component/PageNavbar';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: "Sam's Blog | Home",
@@ -21,7 +21,7 @@ export default function RootLayout({
         <PageNavbar />
         <main
           className="relative top-[56px] bg-black pr-[120px] pl-[120px]"
-          style={{ minHeight: "calc(100vh - 56px)" }}
+          style={{ minHeight: 'calc(100vh - 56px)' }}
         >
           {children}
         </main>
