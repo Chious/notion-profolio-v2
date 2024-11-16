@@ -1,32 +1,6 @@
-# Single-page developer portfolio - V2
+# Notion Profolio V2
 
-This is edit version from [version1](https://github.com/Chious/front-mentor-single-developer-profolio)
-
-## Table of contents
-
-- [Overview](#overview)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-
-## Overview
-
-### Screenshot
-
-![](./screenshot.png)
-
-### Links
-
-- Front Mentor URL:
-- Solution URL:
-- Live Site URL:
-
-## My process
+> This is a NextJS project that use Notion API to create a personal blog
 
 ### Built with
 
@@ -35,9 +9,40 @@ This is edit version from [version1](https://github.com/Chious/front-mentor-sing
 - [Notion API](https://developers.notion.com) -- handle backend data
 - [Vercel](https://vercel.com) -- Deploy website
 
-### What I learned
+**TBD in V2**
 
-### Continued development
+- [Neon](https://neon.tech) -- PostgresSQL database
+- [Prisma](https://www.prisma.io) -- ORM for NodeJS
+- [Vercel Blob Storage](https://vercel.com/docs/storage/vercel-blob) -- Store image
+- [GraphQL](https://graphql.org) -- Query language for API
+- [Apollo Client](https://www.apollographql.com/docs/react) -- GraphQL client
+
+### Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+1. add `.env.local` file in root folder, view example in `.env.example`.
+
+2. Run the development server:
+
+```bash
+npm install
+yarn install
+
+## Run the development server
+npm run dev
+```
+
+3. How to View DB in Prisma
+
+**TBD: View DB in Prisma**
+
+```bash
+npx prisma studio
+```
+
+4. View API Document in GraphQL：`/api/graphql`
+   **TBD: View API Document in GraphQL**
 
 ### Useful resources
 
