@@ -3,9 +3,9 @@ import {
   TabsList,
   TabsContent,
   Tabs,
-} from "@/app/component/Protfolio/TabGallery/Tabs";
-import Link from "next/link";
-import Image from "next/image";
+} from '@/component/Protfolio/TabGallery/Tabs';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function TabGallery() {
   return (
@@ -30,8 +30,8 @@ export default function TabGallery() {
                 height={300}
                 src="/placeholder.svg"
                 style={{
-                  aspectRatio: "400/300",
-                  objectFit: "cover",
+                  aspectRatio: '400/300',
+                  objectFit: 'cover',
                 }}
                 width={400}
               />
@@ -52,8 +52,8 @@ export default function TabGallery() {
                 height={300}
                 src="/placeholder.svg"
                 style={{
-                  aspectRatio: "400/300",
-                  objectFit: "cover",
+                  aspectRatio: '400/300',
+                  objectFit: 'cover',
                 }}
                 width={400}
               />
@@ -74,8 +74,8 @@ export default function TabGallery() {
                 height={300}
                 src="/placeholder.svg"
                 style={{
-                  aspectRatio: "400/300",
-                  objectFit: "cover",
+                  aspectRatio: '400/300',
+                  objectFit: 'cover',
                 }}
                 width={400}
               />
@@ -96,8 +96,8 @@ export default function TabGallery() {
                 height={300}
                 src="/placeholder.svg"
                 style={{
-                  aspectRatio: "400/300",
-                  objectFit: "cover",
+                  aspectRatio: '400/300',
+                  objectFit: 'cover',
                 }}
                 width={400}
               />
@@ -118,8 +118,8 @@ export default function TabGallery() {
                 height={300}
                 src="/placeholder.svg"
                 style={{
-                  aspectRatio: "400/300",
-                  objectFit: "cover",
+                  aspectRatio: '400/300',
+                  objectFit: 'cover',
                 }}
                 width={400}
               />
@@ -140,8 +140,8 @@ export default function TabGallery() {
                 height={300}
                 src="/placeholder.svg"
                 style={{
-                  aspectRatio: "400/300",
-                  objectFit: "cover",
+                  aspectRatio: '400/300',
+                  objectFit: 'cover',
                 }}
                 width={400}
               />
